@@ -1,0 +1,1201 @@
+{
+  "luis_schema_version": "2.1.0",
+  "versionId": "0.1",
+  "name": "EntAppSample",
+  "desc": "Sample Enterprise Bot for Doing CRM",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "Calendar.Add",
+      "inherits": {
+        "domain_name": "Calendar",
+        "model_name": "Add"
+      }
+    },
+    {
+      "name": "Calendar.CheckAvailability",
+      "inherits": {
+        "domain_name": "Calendar",
+        "model_name": "CheckAvailability"
+      }
+    },
+    {
+      "name": "Calendar.Delete",
+      "inherits": {
+        "domain_name": "Calendar",
+        "model_name": "Delete"
+      }
+    },
+    {
+      "name": "Calendar.Edit",
+      "inherits": {
+        "domain_name": "Calendar",
+        "model_name": "Edit"
+      }
+    },
+    {
+      "name": "Calendar.Find",
+      "inherits": {
+        "domain_name": "Calendar",
+        "model_name": "Find"
+      }
+    },
+    {
+      "name": "Hello"
+    },
+    {
+      "name": "Help"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "Note.CheckOffItem",
+      "inherits": {
+        "domain_name": "Note",
+        "model_name": "CheckOffItem"
+      }
+    },
+    {
+      "name": "Note.Clear",
+      "inherits": {
+        "domain_name": "Note",
+        "model_name": "Clear"
+      }
+    },
+    {
+      "name": "Note.Confirm",
+      "inherits": {
+        "domain_name": "Note",
+        "model_name": "Confirm"
+      }
+    },
+    {
+      "name": "Note.Create",
+      "inherits": {
+        "domain_name": "Note",
+        "model_name": "Create"
+      }
+    },
+    {
+      "name": "Note.Delete",
+      "inherits": {
+        "domain_name": "Note",
+        "model_name": "Delete"
+      }
+    },
+    {
+      "name": "Note.DeleteNoteItem",
+      "inherits": {
+        "domain_name": "Note",
+        "model_name": "DeleteNoteItem"
+      }
+    },
+    {
+      "name": "Note.ReadAloud",
+      "inherits": {
+        "domain_name": "Note",
+        "model_name": "ReadAloud"
+      }
+    },
+    {
+      "name": "Note.ShowNext",
+      "inherits": {
+        "domain_name": "Note",
+        "model_name": "ShowNext"
+      }
+    }
+  ],
+  "entities": [
+    {
+      "name": "Calendar.Location",
+      "inherits": {
+        "domain_name": "Calendar",
+        "model_name": "Location"
+      }
+    },
+    {
+      "name": "Calendar.Subject",
+      "inherits": {
+        "domain_name": "Calendar",
+        "model_name": "Subject"
+      }
+    },
+    {
+      "name": "Note.ContactName",
+      "inherits": {
+        "domain_name": "Note",
+        "model_name": "ContactName"
+      }
+    },
+    {
+      "name": "Note.Title",
+      "inherits": {
+        "domain_name": "Note",
+        "model_name": "Title"
+      }
+    }
+  ],
+  "composites": [],
+  "closedLists": [],
+  "bing_entities": [
+    "datetimeV2",
+    "email"
+  ],
+  "actions": [],
+  "model_features": [
+    {
+      "name": "Greetings",
+      "mode": true,
+      "words": "Hello,Wotcha,hi,hey,greetings,good morning,goodbye,welcome,good day,oh,hello,well,- oh,yes,Hey ya",
+      "activated": true
+    }
+  ],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "hello",
+      "intent": "Hello",
+      "entities": []
+    },
+    {
+      "text": "hi",
+      "intent": "Hello",
+      "entities": []
+    },
+    {
+      "text": "yep",
+      "intent": "Note.Confirm",
+      "entities": []
+    },
+    {
+      "text": "help",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "i need help",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "what's up",
+      "intent": "Hello",
+      "entities": []
+    },
+    {
+      "text": "what can you do?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "yes.",
+      "intent": "Note.Confirm",
+      "entities": []
+    },
+    {
+      "text": "wotcha",
+      "intent": "Hello",
+      "entities": []
+    },
+    {
+      "text": "next one please",
+      "intent": "Note.ShowNext",
+      "entities": []
+    },
+    {
+      "text": "Add a new event on 27-Apr",
+      "intent": "Calendar.Add",
+      "entities": []
+    },
+    {
+      "text": "save the date may 17 pictures party",
+      "intent": "Calendar.Add",
+      "entities": []
+    },
+    {
+      "text": "schedule appointment for tomorrow please",
+      "intent": "Calendar.Add",
+      "entities": []
+    },
+    {
+      "text": "Meeting My Manager",
+      "intent": "Calendar.Add",
+      "entities": [
+        {
+          "entity": "Calendar.Subject",
+          "startPos": 0,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "Add tomorrow's breakfast by 10 AM",
+      "intent": "Calendar.Add",
+      "entities": []
+    },
+    {
+      "text": "calendar i'll be at the garage from 8 till 3 this saturday",
+      "intent": "Calendar.Add",
+      "entities": [
+        {
+          "entity": "Calendar.Location",
+          "startPos": 17,
+          "endPos": 18
+        }
+      ]
+    },
+    {
+      "text": "The meeting will last for one hour",
+      "intent": "Calendar.Add",
+      "entities": []
+    },
+    {
+      "text": "Add an event to visit 209 Nashville Gym",
+      "intent": "Calendar.Add",
+      "entities": [
+        {
+          "entity": "Calendar.Location",
+          "startPos": 26,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "Add imax theater to my upcoming events",
+      "intent": "Calendar.Add",
+      "entities": [
+        {
+          "entity": "Calendar.Subject",
+          "startPos": 4,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "897 pancake house on Tuesday 1:00 pm please",
+      "intent": "Calendar.Add",
+      "entities": [
+        {
+          "entity": "Calendar.Location",
+          "startPos": 0,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "Am i free to be with friends saturday?",
+      "intent": "Calendar.CheckAvailability",
+      "entities": [
+        {
+          "entity": "Calendar.Subject",
+          "startPos": 13,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "Check Lee's calender",
+      "intent": "Calendar.CheckAvailability",
+      "entities": []
+    },
+    {
+      "text": "Free time this afternoon please",
+      "intent": "Calendar.CheckAvailability",
+      "entities": []
+    },
+    {
+      "text": "Is Keil available tomorrow?",
+      "intent": "Calendar.CheckAvailability",
+      "entities": []
+    },
+    {
+      "text": "when is Paul available?",
+      "intent": "Calendar.CheckAvailability",
+      "entities": []
+    },
+    {
+      "text": "Check Friday at 9 am",
+      "intent": "Calendar.CheckAvailability",
+      "entities": []
+    },
+    {
+      "text": "How soon will Jack be free?",
+      "intent": "Calendar.CheckAvailability",
+      "entities": []
+    },
+    {
+      "text": "Show me Samuel's availability for Tuesday morning",
+      "intent": "Calendar.CheckAvailability",
+      "entities": []
+    },
+    {
+      "text": "View Tom Chros availability",
+      "intent": "Calendar.CheckAvailability",
+      "entities": []
+    },
+    {
+      "text": "Check if I have time for a meeting tonight",
+      "intent": "Calendar.CheckAvailability",
+      "entities": []
+    },
+    {
+      "text": "Calendar cancel Friday with Eddy",
+      "intent": "Calendar.Delete",
+      "entities": []
+    },
+    {
+      "text": "Can you delete my events this saturday?",
+      "intent": "Calendar.Delete",
+      "entities": []
+    },
+    {
+      "text": "Cancel an event on the calendar",
+      "intent": "Calendar.Delete",
+      "entities": []
+    },
+    {
+      "text": "Delete Helen Fred's birthday",
+      "intent": "Calendar.Delete",
+      "entities": [
+        {
+          "entity": "Calendar.Subject",
+          "startPos": 7,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "stop any new appointments",
+      "intent": "Calendar.Delete",
+      "entities": []
+    },
+    {
+      "text": "Cancel appointment",
+      "intent": "Calendar.Delete",
+      "entities": []
+    },
+    {
+      "text": "Remove a calendar entry",
+      "intent": "Calendar.Delete",
+      "entities": []
+    },
+    {
+      "text": "Cancel tomorrow's appointment",
+      "intent": "Calendar.Delete",
+      "entities": []
+    },
+    {
+      "text": "Please just delete my meeting",
+      "intent": "Calendar.Delete",
+      "entities": [
+        {
+          "entity": "Calendar.Subject",
+          "startPos": 19,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "Edit the meeting to be 7:30 not 8:30",
+      "intent": "Calendar.Edit",
+      "entities": []
+    },
+    {
+      "text": "Appointment extension request",
+      "intent": "Calendar.Edit",
+      "entities": []
+    },
+    {
+      "text": "Meeting adjustment",
+      "intent": "Calendar.Edit",
+      "entities": []
+    },
+    {
+      "text": "Extend lunch meeting 30 minutes extra",
+      "intent": "Calendar.Edit",
+      "entities": [
+        {
+          "entity": "Calendar.Subject",
+          "startPos": 7,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "Marketing meetings on Tuesdays will now be every Wednesday please change on my calendar",
+      "intent": "Calendar.Edit",
+      "entities": [
+        {
+          "entity": "Calendar.Subject",
+          "startPos": 0,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "Help me in rescheduling my calender",
+      "intent": "Calendar.Edit",
+      "entities": []
+    },
+    {
+      "text": "I want to reschedule tomorrow's meeting",
+      "intent": "Calendar.Edit",
+      "entities": []
+    },
+    {
+      "text": "Change today's course time to 11 pm",
+      "intent": "Calendar.Edit",
+      "entities": []
+    },
+    {
+      "text": "Appointment with Johnson needs to be next week",
+      "intent": "Calendar.Edit",
+      "entities": []
+    },
+    {
+      "text": "Change the meeting with Chris to 9:00 am",
+      "intent": "Calendar.Edit",
+      "entities": []
+    },
+    {
+      "text": "Calendar for november 1948",
+      "intent": "Calendar.Find",
+      "entities": []
+    },
+    {
+      "text": "Display weekend plans",
+      "intent": "Calendar.Find",
+      "entities": []
+    },
+    {
+      "text": "Do I have anything on wednesday?",
+      "intent": "Calendar.Find",
+      "entities": []
+    },
+    {
+      "text": "How many days are there between March 13th 2015 and today?",
+      "intent": "Calendar.Find",
+      "entities": []
+    },
+    {
+      "text": "voice activated reading of appointments this week",
+      "intent": "Calendar.Find",
+      "entities": []
+    },
+    {
+      "text": "Search for meetings with Chris",
+      "intent": "Calendar.Find",
+      "entities": []
+    },
+    {
+      "text": "Pull up my appointment find out how much time i have before my next appointment",
+      "intent": "Calendar.Find",
+      "entities": []
+    },
+    {
+      "text": "show me tomorrow's wedding party time",
+      "intent": "Calendar.Find",
+      "entities": []
+    },
+    {
+      "text": "Tell me the event details",
+      "intent": "Calendar.Find",
+      "entities": []
+    },
+    {
+      "text": "what i'm going to do at this meeting?",
+      "intent": "Calendar.Find",
+      "entities": []
+    },
+    {
+      "text": "dsw shoes 7804 on Monday 3:00 pm",
+      "intent": "Calendar.Add",
+      "entities": [
+        {
+          "entity": "Calendar.Location",
+          "startPos": 0,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "dunmore pa sonic sounds Friday morning please",
+      "intent": "Calendar.Add",
+      "entities": [
+        {
+          "entity": "Calendar.Location",
+          "startPos": 0,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "Meet Kiel at hallmark cards 405 Saturday 2:00 pm",
+      "intent": "Calendar.Add",
+      "entities": [
+        {
+          "entity": "Calendar.Location",
+          "startPos": 13,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "Make dinner plans at restaurant at 8pm.",
+      "intent": "Calendar.Add",
+      "entities": [
+        {
+          "entity": "Calendar.Location",
+          "startPos": 21,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "Visit 209 Nashville Gym tomorrow morning",
+      "intent": "Calendar.Add",
+      "entities": [
+        {
+          "entity": "Calendar.Location",
+          "startPos": 10,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "Add to my calender daddy daughter dance at meadowbrook",
+      "intent": "Calendar.Add",
+      "entities": [
+        {
+          "entity": "Calendar.Location",
+          "startPos": 43,
+          "endPos": 53
+        }
+      ]
+    },
+    {
+      "text": "Add to Tuesday's calender visting milos bar tequila",
+      "intent": "Calendar.Add",
+      "entities": [
+        {
+          "entity": "Calendar.Location",
+          "startPos": 17,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "I want to reschedule the meeting at the air force club",
+      "intent": "Calendar.Edit",
+      "entities": [
+        {
+          "entity": "Calendar.Subject",
+          "startPos": 25,
+          "endPos": 53
+        }
+      ]
+    },
+    {
+      "text": "Add a new task finish assignment",
+      "intent": "Calendar.Add",
+      "entities": [
+        {
+          "entity": "Calendar.Subject",
+          "startPos": 15,
+          "endPos": 31
+        }
+      ]
+    },
+    {
+      "text": "Move the BBQ party to Friday",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Calendar.Subject",
+          "startPos": 9,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "cross off shorts from my shopping list .",
+      "intent": "Note.CheckOffItem",
+      "entities": []
+    },
+    {
+      "text": "cross out milk from the list",
+      "intent": "Note.CheckOffItem",
+      "entities": []
+    },
+    {
+      "text": "mark off cheese on shopping list",
+      "intent": "Note.CheckOffItem",
+      "entities": []
+    },
+    {
+      "text": "scratch shampoo from list",
+      "intent": "Note.CheckOffItem",
+      "entities": []
+    },
+    {
+      "text": "take Shoes from Target shopping list",
+      "intent": "Note.CheckOffItem",
+      "entities": []
+    },
+    {
+      "text": "cross out vitamins from list",
+      "intent": "Note.CheckOffItem",
+      "entities": []
+    },
+    {
+      "text": "cross off sugar from shopping list",
+      "intent": "Note.CheckOffItem",
+      "entities": []
+    },
+    {
+      "text": "cross shampoo off my shopping list",
+      "intent": "Note.CheckOffItem",
+      "entities": []
+    },
+    {
+      "text": "take lemons and onions off my shopping list",
+      "intent": "Note.CheckOffItem",
+      "entities": []
+    },
+    {
+      "text": "take butter off of my shopping list .",
+      "intent": "Note.CheckOffItem",
+      "entities": []
+    },
+    {
+      "text": "\"cancel all entries in the \"\" people to call \"\" note\"",
+      "intent": "Note.Clear",
+      "entities": []
+    },
+    {
+      "text": "clear my save notes",
+      "intent": "Note.Clear",
+      "entities": [
+        {
+          "entity": "Note.Title",
+          "startPos": 9,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "clear all items from the chores list .",
+      "intent": "Note.Clear",
+      "entities": []
+    },
+    {
+      "text": "Can you clear MOM note ?",
+      "intent": "Note.Clear",
+      "entities": []
+    },
+    {
+      "text": "clear last note",
+      "intent": "Note.Clear",
+      "entities": []
+    },
+    {
+      "text": "How can I clear my notes",
+      "intent": "Note.Clear",
+      "entities": []
+    },
+    {
+      "text": "clear all note from last tuesday .",
+      "intent": "Note.Clear",
+      "entities": []
+    },
+    {
+      "text": "Help me in clearing the shopping note",
+      "intent": "Note.Clear",
+      "entities": []
+    },
+    {
+      "text": "\"Let's clear \"\" Birthday Preparations \"\" note\"",
+      "intent": "Note.Clear",
+      "entities": []
+    },
+    {
+      "text": "Clear for me all the dummy notes",
+      "intent": "Note.Clear",
+      "entities": []
+    },
+    {
+      "text": "That's good",
+      "intent": "Note.Confirm",
+      "entities": []
+    },
+    {
+      "text": "Okay I got it",
+      "intent": "Note.Confirm",
+      "entities": []
+    },
+    {
+      "text": "It's okay from me",
+      "intent": "Note.Confirm",
+      "entities": []
+    },
+    {
+      "text": "I am confirming keeping all items on lists",
+      "intent": "Note.Confirm",
+      "entities": []
+    },
+    {
+      "text": "\"I want to create a note of title \"\" Shopping list \"\"\"",
+      "intent": "Note.Create",
+      "entities": [
+        {
+          "entity": "Note.Title",
+          "startPos": 34,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "To buy list",
+      "intent": "Note.Create",
+      "entities": [
+        {
+          "entity": "Note.Title",
+          "startPos": 3,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "Save the current note",
+      "intent": "Note.Create",
+      "entities": []
+    },
+    {
+      "text": "type in notepad",
+      "intent": "Note.Create",
+      "entities": []
+    },
+    {
+      "text": "create My Favorites note",
+      "intent": "Note.Create",
+      "entities": []
+    },
+    {
+      "text": "waffles recipe is my new note to be created",
+      "intent": "Note.Create",
+      "entities": []
+    },
+    {
+      "text": "A new note of name Business Solutions",
+      "intent": "Note.Create",
+      "entities": []
+    },
+    {
+      "text": "A new note please",
+      "intent": "Note.Create",
+      "entities": []
+    },
+    {
+      "text": "can you set a note up to mom",
+      "intent": "Note.Create",
+      "entities": [
+        {
+          "entity": "Note.ContactName",
+          "startPos": 25,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "create note with notepad",
+      "intent": "Note.Create",
+      "entities": []
+    },
+    {
+      "text": "Delete the note of name Guest list",
+      "intent": "Note.Delete",
+      "entities": []
+    },
+    {
+      "text": "delete poetry notes",
+      "intent": "Note.Delete",
+      "entities": [
+        {
+          "entity": "Note.Title",
+          "startPos": 7,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "DELETE LIBRARY LIST",
+      "intent": "Note.Delete",
+      "entities": [
+        {
+          "entity": "Note.Title",
+          "startPos": 7,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "Delete note: Summer Reading List.",
+      "intent": "Note.Delete",
+      "entities": []
+    },
+    {
+      "text": "dismiss Fred's notes",
+      "intent": "Note.Delete",
+      "entities": [
+        {
+          "entity": "Note.Title",
+          "startPos": 8,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "Remove Daddy's BD note",
+      "intent": "Note.Delete",
+      "entities": []
+    },
+    {
+      "text": "delete my ideas list",
+      "intent": "Note.Delete",
+      "entities": []
+    },
+    {
+      "text": "Delete Insurance note please",
+      "intent": "Note.Delete",
+      "entities": []
+    },
+    {
+      "text": "delete latest note",
+      "intent": "Note.Delete",
+      "entities": []
+    },
+    {
+      "text": "Recall note 3 delete",
+      "intent": "Note.Delete",
+      "entities": []
+    },
+    {
+      "text": "delete bananas from my shopping list",
+      "intent": "Note.DeleteNoteItem",
+      "entities": []
+    },
+    {
+      "text": "Remove the last entry",
+      "intent": "Note.DeleteNoteItem",
+      "entities": []
+    },
+    {
+      "text": "delete cat food from pet store list",
+      "intent": "Note.DeleteNoteItem",
+      "entities": []
+    },
+    {
+      "text": "delete underwear on shopping list",
+      "intent": "Note.DeleteNoteItem",
+      "entities": []
+    },
+    {
+      "text": "please delete some items off my reminder list",
+      "intent": "Note.DeleteNoteItem",
+      "entities": []
+    },
+    {
+      "text": "Remove number 2 from my List of Ideas Note.",
+      "intent": "Note.DeleteNoteItem",
+      "entities": []
+    },
+    {
+      "text": "delete cookies from shopping list",
+      "intent": "Note.DeleteNoteItem",
+      "entities": []
+    },
+    {
+      "text": "delete milk from shopping list",
+      "intent": "Note.DeleteNoteItem",
+      "entities": []
+    },
+    {
+      "text": "delete shorts from shopping list",
+      "intent": "Note.DeleteNoteItem",
+      "entities": []
+    },
+    {
+      "text": "delete the wallpaper design from my ideas list",
+      "intent": "Note.DeleteNoteItem",
+      "entities": []
+    },
+    {
+      "text": "Can you read the grocery list note please",
+      "intent": "Note.ReadAloud",
+      "entities": []
+    },
+    {
+      "text": "Repeat the last word again",
+      "intent": "Note.ReadAloud",
+      "entities": []
+    },
+    {
+      "text": "Read meeting notes to me",
+      "intent": "Note.ReadAloud",
+      "entities": []
+    },
+    {
+      "text": "recall most recent groccery list",
+      "intent": "Note.ReadAloud",
+      "entities": [
+        {
+          "entity": "Note.Title",
+          "startPos": 19,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "Please read Trip notes",
+      "intent": "Note.ReadAloud",
+      "entities": []
+    },
+    {
+      "text": "I want you to read this note loudly",
+      "intent": "Note.ReadAloud",
+      "entities": []
+    },
+    {
+      "text": "Read my grocery list",
+      "intent": "Note.ReadAloud",
+      "entities": []
+    },
+    {
+      "text": "\"read note \"\" grocery list \"\"\"",
+      "intent": "Note.ReadAloud",
+      "entities": []
+    },
+    {
+      "text": "speak trip note for me please",
+      "intent": "Note.ReadAloud",
+      "entities": []
+    },
+    {
+      "text": "read the note appointments please",
+      "intent": "Note.ReadAloud",
+      "entities": []
+    },
+    {
+      "text": "show me the next note",
+      "intent": "Note.ShowNext",
+      "entities": []
+    },
+    {
+      "text": "next note please",
+      "intent": "Note.ShowNext",
+      "entities": []
+    },
+    {
+      "text": "what is the next one ?",
+      "intent": "Note.ShowNext",
+      "entities": []
+    },
+    {
+      "text": "Display the next note",
+      "intent": "Note.ShowNext",
+      "entities": []
+    },
+    {
+      "text": "display the next note",
+      "intent": "Note.ShowNext",
+      "entities": []
+    },
+    {
+      "text": "go to the next note please",
+      "intent": "Note.ShowNext",
+      "entities": []
+    },
+    {
+      "text": "show the next note",
+      "intent": "Note.ShowNext",
+      "entities": []
+    },
+    {
+      "text": "please show the next note",
+      "intent": "Note.ShowNext",
+      "entities": []
+    },
+    {
+      "text": "Display the next note please",
+      "intent": "Note.ShowNext",
+      "entities": []
+    },
+    {
+      "text": "I'd like to create a note for Karla birthday",
+      "intent": "Note.Create",
+      "entities": [
+        {
+          "entity": "Note.ContactName",
+          "startPos": 21,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "Let's create a note of title outing with Martha",
+      "intent": "Note.Create",
+      "entities": [
+        {
+          "entity": "Note.ContactName",
+          "startPos": 29,
+          "endPos": 34
+        }
+      ]
+    },
+    {
+      "text": "Write a note to Carolina asking her to check her inbox",
+      "intent": "Note.Create",
+      "entities": [
+        {
+          "entity": "Note.ContactName",
+          "startPos": 16,
+          "endPos": 23
+        }
+      ]
+    },
+    {
+      "text": "Let me set a note up to Marco",
+      "intent": "Note.Create",
+      "entities": [
+        {
+          "entity": "Note.ContactName",
+          "startPos": 24,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "Create for me a note about Car Oil",
+      "intent": "Note.Create",
+      "entities": []
+    },
+    {
+      "text": "Stop reading the note",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "Delete the note number two",
+      "intent": "Note.Delete",
+      "entities": []
+    },
+    {
+      "text": "don't take any other notes",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "show me samuel's availability for tuesday morning",
+      "intent": "Calendar.CheckAvailability",
+      "entities": [
+        {
+          "entity": "Note.ContactName",
+          "startPos": 8,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "when is paul available?",
+      "intent": "Calendar.CheckAvailability",
+      "entities": [
+        {
+          "entity": "Note.ContactName",
+          "startPos": 8,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "check if i have time for a meeting tomorrow with ian",
+      "intent": "Calendar.Find",
+      "entities": []
+    },
+    {
+      "text": "check availablity",
+      "intent": "Calendar.CheckAvailability",
+      "entities": []
+    },
+    {
+      "text": "find time on friday to meet with bob@microsoft for an hour about his account",
+      "intent": "Calendar.CheckAvailability",
+      "entities": [
+        {
+          "entity": "Note.ContactName",
+          "startPos": 33,
+          "endPos": 35
+        },
+        {
+          "entity": "Note.Title",
+          "startPos": 69,
+          "endPos": 75
+        }
+      ]
+    },
+    {
+      "text": "find time on thursday to meet with ian@interact.co.uk for 30 minutes about his account",
+      "intent": "Calendar.CheckAvailability",
+      "entities": [
+        {
+          "entity": "Note.Title",
+          "startPos": 79,
+          "endPos": 85
+        }
+      ]
+    },
+    {
+      "text": "find time tomorrow to meet with bob smith about his account for an hour",
+      "intent": "Calendar.CheckAvailability",
+      "entities": [
+        {
+          "entity": "Note.ContactName",
+          "startPos": 32,
+          "endPos": 34
+        },
+        {
+          "entity": "Note.Title",
+          "startPos": 52,
+          "endPos": 58
+        }
+      ]
+    },
+    {
+      "text": "find time july 4 to meet with ian@interact.co.uk for about his account for an hour",
+      "intent": "Calendar.CheckAvailability",
+      "entities": [
+        {
+          "entity": "Note.Title",
+          "startPos": 63,
+          "endPos": 69
+        }
+      ]
+    },
+    {
+      "text": "find time tomorrow for an hour to talk to bob about his account",
+      "intent": "Calendar.CheckAvailability",
+      "entities": [
+        {
+          "entity": "Note.ContactName",
+          "startPos": 42,
+          "endPos": 44
+        },
+        {
+          "entity": "Note.Title",
+          "startPos": 56,
+          "endPos": 62
+        }
+      ]
+    }
+  ]
+}

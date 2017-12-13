@@ -1,0 +1,149 @@
+{
+  "luis_schema_version": "2.1.0",
+  "versionId": "0.1",
+  "name": "CommerceBot",
+  "desc": "CommerceBot LUIS App Definition",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "Help"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "Reserve.Cabana"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Cabana"
+    }
+  ],
+  "composites": [],
+  "closedLists": [],
+  "bing_entities": [
+    "datetimeV2",
+    "money",
+    "number"
+  ],
+  "actions": [],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "hello",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "help",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "what can you do?",
+      "intent": "Help",
+      "entities": []
+    },
+    {
+      "text": "do you have any cabanas",
+      "intent": "Reserve.Cabana",
+      "entities": [
+        {
+          "entity": "Cabana",
+          "startPos": 16,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "cabana",
+      "intent": "Reserve.Cabana",
+      "entities": [
+        {
+          "entity": "Cabana",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "i'd like to reserve a cabana",
+      "intent": "Reserve.Cabana",
+      "entities": [
+        {
+          "entity": "Cabana",
+          "startPos": 22,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "i'd like to reserve a cabana.",
+      "intent": "Reserve.Cabana",
+      "entities": [
+        {
+          "entity": "Cabana",
+          "startPos": 22,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "reserve cabana",
+      "intent": "Reserve.Cabana",
+      "entities": [
+        {
+          "entity": "Cabana",
+          "startPos": 8,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "book a cabana",
+      "intent": "Reserve.Cabana",
+      "entities": [
+        {
+          "entity": "Cabana",
+          "startPos": 7,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "i'd like to rent a cabana",
+      "intent": "Reserve.Cabana",
+      "entities": [
+        {
+          "entity": "Cabana",
+          "startPos": 19,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "i would like to reserve a cabana",
+      "intent": "Reserve.Cabana",
+      "entities": [
+        {
+          "entity": "Cabana",
+          "startPos": 26,
+          "endPos": 31
+        }
+      ]
+    },
+    {
+      "text": "i'd like to book a cabana.",
+      "intent": "Reserve.Cabana",
+      "entities": [
+        {
+          "entity": "Cabana",
+          "startPos": 19,
+          "endPos": 24
+        }
+      ]
+    }
+  ]
+}
