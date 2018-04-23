@@ -134,13 +134,14 @@ namespace Enterprisebot.Dialogs
             Field<MeetingRequestInput> durationField = new FieldReflector<MeetingRequestInput>(nameof(MeetingRequestInput.MeetingDuration));
             // TODO: Seems this is a good chance for an enum
             durationField.SetPrompt(new PromptAttribute("What is the meeting duration?"));
+            // HACK: Meeting time is always an hour
             durationField.SetLimits(60, 3600);
 
             return new FormBuilder<MeetingRequestInput>()
                 .Field(nameof(MeetingRequestInput.RequestedDateTime), "What day would you like to meet?")
                 .Field(durationField)
                 .Field(nameof(MeetingRequestInput.AttendeeEmail), "What is e-mail address of the person you'd like to meet?")
-                .Field(nameof(MeetingRequestInput.AttendeeName), "What the name of the person you're meeting?")
+                .Field(nameof(MeetingRequestInput.AttendeeName), "What is the name of the person you're meeting?")
                 .Field(nameof(MeetingRequestInput.MeetingSubject), "What is the meeting about?")
                 .Build();
         }

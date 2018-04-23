@@ -45,7 +45,7 @@ namespace Enterprisebot.Dialogs
             {
                 ClientId = ConfigurationManager.AppSettings["aad:ClientId"],
                 ClientSecret = ConfigurationManager.AppSettings["aad:ClientSecret"],
-                Scopes = new string[] { "User.Read" },
+                Scopes = new string[] { "User.Read", "Calendars.Read", "Calendars.ReadWrite", "Calendars.Read.Shared", "Calendars.ReadWrite.Shared" },
                 RedirectUrl = ConfigurationManager.AppSettings["aad:Callback"]
             };
 

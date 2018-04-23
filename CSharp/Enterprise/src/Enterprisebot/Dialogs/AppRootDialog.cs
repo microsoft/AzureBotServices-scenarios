@@ -5,7 +5,9 @@ using Microsoft.Bot.Builder.Luis.Models;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -69,12 +71,12 @@ namespace Enterprisebot.Dialogs
             if (result.TryFindEntity(EntityHowLong, out EntityRecommendation recHowLong))
             {
                 recHowLong.Type = "HowLong";
-                meetingData.MeetingDuration = ((JArray)recHowLong.Resolution["values"])[0].Value<int>("value");
+                meetingData.MeetingDuration = GetRecommendationValue<int>(recHowLong, "value");
             }
             if (result.TryFindEntity(EntityWhen, out EntityRecommendation recWhen))
             {
                 recWhen.Type = "When";
-                meetingData.RequestedDateTime = ((JArray)recWhen.Resolution["values"])[0].Value<DateTime>("value");
+                meetingData.RequestedDateTime = GetRecommendationValues<DateTime>(recWhen, "value").First(v => v > DateTime.UtcNow);
             }
 
             if (result.TryFindEntity(EntityEmail, out EntityRecommendation recEmail))
@@ -95,6 +97,19 @@ namespace Enterprisebot.Dialogs
             await context.Forward(new AppAuthDialog(),
                 this.ResumeAfterCalendarCheckDialog, message, CancellationToken.None);
         }
+
+        private static T GetRecommendationValue<T>(EntityRecommendation recommendation, string key)
+        {
+            return GetRecommendationValues<T>(recommendation, key).Single();
+        }
+
+        private static IEnumerable<T> GetRecommendationValues<T>(EntityRecommendation recommendation, string key)
+        {
+            List<object> resolutionList = (List<object>)recommendation.Resolution["values"];
+            IEnumerable<Dictionary<string, object>> resolutionDictionaries = resolutionList.Cast<Dictionary<string, object>>();
+            return resolutionDictionaries.Select(resolutionDictionary => (T)Convert.ChangeType(resolutionDictionary[key], typeof(T)));
+        }
+
         private async Task ResumeAfterCalendarCheckDialog(IDialogContext context, IAwaitable<object> result)
         {
             await context.PostAsync("Thank you. We're all done. Is there anything else I can do for you?");

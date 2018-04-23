@@ -44,8 +44,12 @@ namespace Enterprisebot.Services
                             
                             foreach (var item in findMeetingResponse.meetingTimeSuggestions)
                             {
-                                DateTime start = item.meetingTimeSlot.start.dateTime;
-                                possibleTimes.Add(start.ToLongTimeString(), new MeetingSlot() { Start = start });
+                                // HACK: This assumes we're offsetting from Pacific Standard Time
+                                string timeZoneId = "Pacific Standard Time";
+                                DateTime startUtc = item.meetingTimeSlot.start.dateTime;
+                                DateTime start = TimeZoneInfo.ConvertTimeFromUtc(startUtc, TimeZoneInfo.FindSystemTimeZoneById(timeZoneId));
+
+                                possibleTimes.Add(start.ToString(), new MeetingSlot() { Start = start });
                             }
                             return possibleTimes;
                         }
@@ -134,15 +138,15 @@ namespace Enterprisebot.Services
             var ztStart = new ZonedDateTime();
             var ztEnd = new ZonedDateTime();
 
-            // TODO: This assumes we're offsetting from Pacific Time
+            // HACK: This assumes we're offsetting from Pacific Standard Time
             // https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/dateTimeTimeZone
             var current = new DateTime(preferredDate.Year, preferredDate.Month, preferredDate.Day, 17, 0, 0, DateTimeKind.Utc);
-            string timeZoneText = "Pacific Standard Time";
+            string timeZoneId = "Pacific Standard Time";
             
             ztStart.dateTime = current;
-            ztStart.timeZone = timeZoneText;
+            ztStart.timeZone = timeZoneId;
             ztEnd.dateTime = current.AddDays(1).AddHours(1);
-            ztEnd.timeZone = timeZoneText;
+            ztEnd.timeZone = timeZoneId;
 
             var ts = new Timeslot()
             {
@@ -179,18 +183,18 @@ namespace Enterprisebot.Services
 
             ce.Location = new SimpleLocation() { DisplayName = "Skype" };
             // TODO: Here's where to integrate with CRM
-            // Probably need three extra items:
-            // ICRMOperations
-            // CRMOperations
-            // CRM DTO of some sort
+            // You will probably need three extra items:
+            //   ICRMOperations
+            //   CRMOperations
+            //   CRM DTO of some sort
             string bodyText = "How can I help you?";
             ce.Body = new Body() { Content = bodyText, ContentType = "text" };
 
-            // TODO: This assumes we're offsetting from Pacific Time
+            // HACK: This assumes we're offsetting from Pacific Standard Time
             // https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/dateTimeTimeZone
-            string timeZoneText = "Pacific Standard Time";
-            ce.Start = new ZonedDateTime() { dateTime = slot.Start, timeZone = timeZoneText };
-            ce.End = new ZonedDateTime() { dateTime = slot.Start.AddSeconds(mri.MeetingDuration.Value), timeZone = timeZoneText };
+            string timeZoneId = "Pacific Standard Time";
+            ce.Start = new ZonedDateTime() { dateTime = slot.Start, timeZone = timeZoneId };
+            ce.End = new ZonedDateTime() { dateTime = slot.Start.AddSeconds(mri.MeetingDuration.Value), timeZone = timeZoneId };
             ce.Subject = mri.MeetingSubject;
 
             var aema = new Emailaddress()
