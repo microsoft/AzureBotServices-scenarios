@@ -110,8 +110,10 @@ namespace IotBot.Dialogs
                     request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     if (!string.IsNullOrEmpty(subcommand))
                     {
-                        JObject body = new JObject();
-                        body.Add(new JProperty("value1", subcommand));
+                        JObject body = new JObject
+                        {
+                            new JProperty("value1", subcommand)
+                        };
 
                         var httpContent = new StringContent(body.ToString(), Encoding.UTF8, "application/json");
                         request.Content = httpContent;
